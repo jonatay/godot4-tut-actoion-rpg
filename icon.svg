@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128">
+  <!-- Background -->
+  <rect width="124" height="124" x="2" y="2" fill="#2c3e50" stroke="#34495e" stroke-width="4" rx="14"/>
+  
+  <!-- Simple Orca shape -->
+  <g fill="#ffffff" transform="translate(20, 30)">
+    <!-- Main body -->
+    <ellipse cx="44" cy="34" rx="36" ry="24"/>
+    
+    <!-- Tail -->
+    <path d="M 8 34 Q 0 20, 12 24 Q 0 48, 12 44 Z"/>
+    
+    <!-- Dorsal fin -->
+    <path d="M 44 10 Q 36 0, 52 0 Q 60 10, 44 10 Z"/>
+    
+    <!-- Head -->
+    <ellipse cx="70" cy="34" rx="16" ry="18"/>
+    
+    <!-- Eye -->
+    <circle cx="60" cy="26" r="4" fill="#333333"/>
+    
+    <!-- White patch -->
+    <ellipse cx="52" cy="42" rx="12" ry="6" fill="#ecf0f1"/>
+  </g>
+</svg>
