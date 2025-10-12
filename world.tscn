@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c7uexkcgncr06"]
+[gd_scene load_steps=9 format=4 uid="uid://c7uexkcgncr06"]
 
 [ext_resource type="PackedScene" uid="uid://celsu1s6d1liy" path="res://player/player.tscn" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://bd8a03ves8lgr" path="res://world/grass_background.png" id="1_fj7yv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dh3d0ducqcp6j" path="res://world/bush.tscn" id="3_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://dids1xrifp1p2" path="res://world/tree.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://bxsqqr7qe423x" path="res://world/grass.tscn" id="4_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://cv8mg8obsxd58" path="res://enemies/bat_enemy.tscn" id="8_gbfbk"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -111,6 +112,15 @@ position = Vector2(307, 14)
 
 [node name="Grass14" parent="." instance=ExtResource("4_pkg7o")]
 position = Vector2(305, 30)
+
+[node name="BatEnemy" parent="." instance=ExtResource("8_gbfbk")]
+position = Vector2(47, 166)
+
+[node name="BatEnemy2" parent="." instance=ExtResource("8_gbfbk")]
+position = Vector2(386, 125)
+
+[node name="BatEnemy3" parent="." instance=ExtResource("8_gbfbk")]
+position = Vector2(286, 13)
 
 [node name="Grass15" parent="." instance=ExtResource("4_pkg7o")]
 position = Vector2(305, 45)
