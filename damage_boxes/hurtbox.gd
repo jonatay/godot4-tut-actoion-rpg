@@ -9,5 +9,9 @@ func _ready() -> void:
 func _on_area_entered(other_area: Area2D) -> void:
 	if other_area is not Hitbox:
 		return
-	# emit_signal("hurt", other_area as Hitbox)
-	hurt.emit(other_area as Hitbox)
+	var other_hitbox = other_area as Hitbox
+	if self in other_hitbox.hit_targets:
+		return
+	if other_hitbox.stores_hit_targets:
+		other_hitbox.hit_targets.append(self)
+	hurt.emit(other_hitbox)

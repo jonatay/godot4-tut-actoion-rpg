@@ -40,7 +40,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -98,7 +98,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 5]
+"values": [1, 4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -110,7 +110,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 5]
+"values": [1, 5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww8v4"]
@@ -137,8 +137,6 @@ advance_mode = 2
 advance_expression = "can_see_player()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ww8v4"]
-advance_mode = 2
-advance_expression = "not can_see_player()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_boacx"]
 advance_mode = 2
@@ -152,9 +150,10 @@ states/HitState/position = Vector2(743, 100)
 states/IdleState/node = SubResource("AnimationNodeAnimation_5gx0a")
 states/IdleState/position = Vector2(546, 100)
 transitions = ["Start", "IdleState", SubResource("AnimationNodeStateMachineTransition_grp10"), "IdleState", "ChaseState", SubResource("AnimationNodeStateMachineTransition_erta8"), "ChaseState", "IdleState", SubResource("AnimationNodeStateMachineTransition_ww8v4"), "HitState", "IdleState", SubResource("AnimationNodeStateMachineTransition_boacx")]
+graph_offset = Vector2(-72, 33)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f4281"]
-graph_offset = Vector2(-153.39743, 166.89471)
+graph_offset = Vector2(-385.93567, 201.89207)
 nodes/output/position = Vector2(340, 160)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_boacx")
 nodes/StateMachine/position = Vector2(40, 140)
@@ -167,7 +166,7 @@ radius = 3.0
 radius = 3.0
 
 [node name="BatEnemy" type="CharacterBody2D"]
-collision_layer = 5
+collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_5gx0a")
@@ -192,9 +191,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_ww8v4")
-}
 tree_root = SubResource("AnimationNodeBlendTree_f4281")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
@@ -204,7 +200,7 @@ target_position = Vector2(8, 0)
 collision_mask = 3
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 16
+collision_layer = 0
 collision_mask = 16
 script = ExtResource("4_grp10")
 metadata/_custom_type_script = "uid://cwfv2grkntc7p"
@@ -215,7 +211,7 @@ shape = SubResource("CircleShape2D_5gx0a")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 0
 script = ExtResource("6_ww8v4")
 knockback_strength = 50.0
 metadata/_custom_type_script = "uid://bpj24rpw6ceiu"
@@ -223,3 +219,13 @@ metadata/_custom_type_script = "uid://bpj24rpw6ceiu"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_f4281")
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Marker2D"]
+path_desired_distance = 4.0
+target_desired_distance = 4.0

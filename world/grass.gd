@@ -9,7 +9,7 @@ extends Node2D
 func _ready() -> void:
 	hurtbox.hurt.connect(_on_hurtbox_hurt)
 
-func _on_hurtbox_hurt(_hitbox: Hitbox) -> void:
+func _on_hurtbox_hurt(_other_hitbox: Hitbox) -> void:
 	var grass_effect_instance = GRASS_EFFECT.instantiate()
 	get_tree().current_scene.add_child(grass_effect_instance)
 	grass_effect_instance.global_position = global_position

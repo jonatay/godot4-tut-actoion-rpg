@@ -1,45 +1,46 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4gfyejxgkf6q"]
+[gd_scene load_steps=14 format=3 uid="uid://c4gfyejxgkf6q"]
 
-[ext_resource type="Texture2D" uid="uid://cl7rp2nq14aw4" path="res://effects/enemy_death_effect.png" id="1_bwh3b"]
+[ext_resource type="Texture2D" uid="uid://cl7rp2nq14aw4" path="res://effects/enemy_death_effect.png" id="1_t8att"]
+[ext_resource type="AudioStream" uid="uid://bx1a2lawu4ovj" path="res://music_and_sounds/enemy_die.wav" id="2_rjmvn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_732bx"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s3e5c"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrndp"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77w3m"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_he2p7"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wmex"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eeyxq"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dc3md"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3hti"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vr25h"]
-atlas = ExtResource("1_bwh3b")
+atlas = ExtResource("1_t8att")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_067ss"]
@@ -77,13 +78,19 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 8.0
 }]
 
-[node name="EnemyDeathEffect" type="AnimatedSprite2D"]
+[node name="DeathEffect" type="AnimatedSprite2D"]
+z_index = 100
 sprite_frames = SubResource("SpriteFrames_067ss")
 autoplay = "default"
 frame = 9
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rjmvn")
+autoplay = true
+bus = &"Sounds"
 
 [connection signal="animation_finished" from="." to="." method="queue_free"]
